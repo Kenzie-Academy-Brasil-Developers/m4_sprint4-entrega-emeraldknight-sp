@@ -1,8 +1,10 @@
 import categoryUpdateService from "../../services/categories/categoryUpdate.service";
 
-const categoryUpdatedController = (req, res) => {
+const categoryUpdatedController = async (req, res) => {
   const { id } = req.params;
   const { name } = req.body;
+
+  console.log("NAME", name)
 
   try {
     const categoryUpdated = await categoryUpdateService({ id, name });

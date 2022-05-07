@@ -1,6 +1,6 @@
 import productUpdateService from "../../services/products/productUpdate.service";
 
-const productUpdatedController = (req, res) => {
+const productUpdatedController = async (req, res) => {
   const { id } = req.params;
   const { name, price, category_id } = req.body;
 
