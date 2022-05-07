@@ -7,16 +7,16 @@ const productUpdateService = async ({ id, name, price, category_id }) => {
 
   if (productID === -1) {
     throw new Error ("Product not found.");
-  }
+  };
 
   const productUpdated = {
     id: id, 
     name: name,
     price: price,
     category_id: category_id
-  }
+  };
 
-  products.splice(productID, 1, productUpdated)
+  products.splice(productID, 1, productUpdated);
 
   return productUpdated;
 }

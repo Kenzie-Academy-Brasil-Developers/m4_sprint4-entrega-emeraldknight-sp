@@ -1,9 +1,11 @@
 import productCreateService from "../../services/products/productCreate.service";
 
 const productCreateController = async (req, res) => {
-  const { name, price, categoria_id } = req.body;
+  const { name, price, category_id } = req.body;
 
-  const newProduct = await productCreateService({ name, price, categoria_id });
+  console.log("REQ", req)
+
+  const newProduct = await productCreateService({ name, price, category_id });
 
   return res.status(201).send(newProduct);
 }

@@ -1,6 +1,6 @@
 import { Router } from "express";
-import productCreateController from "../controllers/categories/categoryCreate.controller";
-import productListController from "../controllers/categories/categoryList.controller";
+import productCreateController from "../controllers/products/productCreate.controller";
+import productListController from "../controllers/products/productList.controller";
 
 const router = Router();
 
