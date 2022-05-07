@@ -4,6 +4,13 @@ const productCreateService = ({ name, price, category_id }) => {
 
   const { products } = db;
   const productID = products.length;
+  const alreadyNameExists = products.findIndex((category) => category.name === name);
+  console.log("NAME", alreadyNameExists)
+
+
+  if (alreadyNameExists !== -1) {
+    throw new Error ("Product already exists.");
+  }
 
   const newProduct = {
     id: productID,
@@ -11,8 +18,6 @@ const productCreateService = ({ name, price, category_id }) => {
     price: price,
     category_id: category_id
   };
-
-  console.log("PRODUTO", newProduct);
 
   products.push(newProduct);
 
