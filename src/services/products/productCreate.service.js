@@ -3,10 +3,8 @@ import db from "../../database";
 const productCreateService = ({ name, price, category_id }) => {
 
   const { products } = db;
-  const productID = products.length;
+  const productID = products.length.toString();
   const alreadyNameExists = products.findIndex((category) => category.name === name);
-  console.log("NAME", alreadyNameExists)
-
 
   if (alreadyNameExists !== -1) {
     throw new Error ("Product already exists.");
