@@ -5,7 +5,7 @@ const productDeleteController = async (req, res) => {
 
   try {
     const productDeleted = productDeleteService({ id });
-    return res.status(200).json({ message: "Product deleted with success." })
+    return res.status(200).json(productDeleted)
 
   } catch (err) {
     return res.status(400).json({

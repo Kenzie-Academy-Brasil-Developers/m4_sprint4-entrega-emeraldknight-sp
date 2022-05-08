@@ -22,7 +22,12 @@ const categoryCreateService = ({ id, name }) => {
 
   categories.push(newCategory);
 
-  return newCategory;
+  const message = {
+    message: "Category created",
+    category: newCategory
+  };
+
+  return message;
 }
 
 export default categoryCreateService;

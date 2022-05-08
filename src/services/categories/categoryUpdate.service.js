@@ -16,8 +16,12 @@ const categoryUpdateService = async ({ id, name }) => {
 
   categories.splice(categoryID, 1, categoryUpdated);
 
-  return categoryUpdated;
+  const message = {
+    message: "Category updated",
+    category: categoryUpdated
+  };
 
+  return message;
 }
 
 export default categoryUpdateService;

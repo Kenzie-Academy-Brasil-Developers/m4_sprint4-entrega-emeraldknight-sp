@@ -8,6 +8,13 @@ const categoryDeleteService = ({ id }) => {
   };
 
   db.categories.splice(categoryID, 1);
+
+  const message = {
+    message: "Category deleted with sucess",
+    category: categoryUpdated
+  };
+
+  return message;
 }
 
 export default categoryDeleteService;

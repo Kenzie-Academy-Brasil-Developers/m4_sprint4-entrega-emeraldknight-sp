@@ -3,9 +3,9 @@ import db from "../../database";
 const productUpdateService = async ({ id, name, price, category_id }) => {
   let { products } = db;
 
-  const productID = await db.findIndex((product) => product.id === id);
+  const productID = await products.find((product) => product.id === id);
 
-  if (productID === -1) {
+  if (productID === undefined) {
     throw new Error ("Product not found.");
   };
 
@@ -18,7 +18,12 @@ const productUpdateService = async ({ id, name, price, category_id }) => {
 
   products.splice(productID, 1, productUpdated);
 
-  return productUpdated;
+  const message = {
+    message: "Product updated",
+    product: productUpdated
+  };
+
+  return message;
 }
 
 export default productUpdateService;

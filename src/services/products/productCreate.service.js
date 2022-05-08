@@ -19,7 +19,12 @@ const productCreateService = ({ name, price, category_id }) => {
 
   products.push(newProduct);
 
-  return newProduct;
+  const message = {
+    message: "Product created",
+    product: newProduct
+  }
+
+  return message;
 }
 
 export default productCreateService;

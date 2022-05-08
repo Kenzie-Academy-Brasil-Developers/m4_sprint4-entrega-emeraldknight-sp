@@ -1,13 +1,20 @@
 import db from "../../database";
 
 const productDeleteService = ({ id }) => {
-  let productID = db.products.findIndex((product) => product.id === id);
+  const productDeleted = db.products.find((product) => product.id === id);
 
-  if (productID === -1) {
+  if (productDeleted === undefined) {
     throw new Error  ("Product not found.");
   };
 
-  db.products.splice(productID, 1);
+  db.products.splice(productDeleted, 1);
+
+  const message = {
+    message: "Product deleted",
+    product: productDeleted
+  };
+
+  return message;
 }
 
 export default productDeleteService;
