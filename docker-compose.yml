@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  node_project:
+    container_name: node_project
+    image: docker_project
+    build: .
+    ports:
+      - 3000:3000
+    depends_on:
+      - database
+    environment:
+      - DB_USER=emerald_user
+      - DB_PASSWORD=0708
+      - DB_HOST=localhost
+      - DB=tests_products
+      - DB_PORT=5433
+  database:
+    container_name: database
+    image: postgres:12
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=emerald_user
+      - POSTGRES_PASSWORD=0708
+      - POSTGRES_DB=tests_products

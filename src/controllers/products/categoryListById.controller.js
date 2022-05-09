@@ -8,7 +8,7 @@ const productListByIDController = async (req, res) => {
     return res.status(200).send(product);
 
   } catch (err) {
-    return res.status(404).json({
+    return res.status(400).json({
       status: "error",
       message: err.message
     })

@@ -1,13 +1,35 @@
-import db from "../../database";
+// import db from "../../database";
+import database from "../../database";
 
-const productListService = () => {
-  const { products } = db;
+const productListService = async () => {
+  try {
+    const res = await database.query(
+      "SELECT * FROM products;"
+    );
+    
+    const products = res.rows.map((row) => {
+      const { id, name, price, category_id } = row;
 
-  if (products.length === 0) {
-    throw new Error ("Products not found.");
-  };
+      return {
+        id,
+        name,
+        price,
+        category_id
+      }
+    });
 
-  return products;
+    return products;
+    
+  } catch (err) {
+    throw new Error(err);
+  }
+
 }
 
 export default productListService;
+
+// const { products } = db;
+
+// if (products.length === 0) {
+//   throw new Error ("Products not found.");
+// };

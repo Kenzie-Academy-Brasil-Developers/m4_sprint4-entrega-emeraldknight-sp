@@ -1,20 +1,42 @@
-import db from "../../database";
+// import db from "../../database";
 
-const productDeleteService = ({ id }) => {
-  const productDeleted = db.products.find((product) => product.id === id);
+import database from "../../database";
 
-  if (productDeleted === undefined) {
-    throw new Error  ("Product not found.");
-  };
+const productDeleteService = async ({ id }) => {
+  
+  try {
 
-  db.products.splice(productDeleted, 1);
+    const res = await database.query(
+      "SELECT * FROM products;"
+    )
 
-  const message = {
-    message: "Product deleted",
-    product: productDeleted
-  };
+    const productDeleted = res.rows.find((row) => row.id === id);
 
-  return message;
+    if (!productDeleted) {
+      throw new Error("Product not found.")
+    }
+
+    await database.query("DELETE FROM products WHERE id = $1;",
+    [id]);
+
+    const message = {
+      message: "Product deleted with success.",
+      product: productDeleted
+    };
+  
+    return message;
+  } catch (err) {
+    throw new Error(err)
+  }
+
 }
 
 export default productDeleteService;
+
+// const productDeleted = db.products.find((product) => product.id === id);
+
+// if (productDeleted === undefined) {
+//   throw new Error  ("Product not found.");
+// };
+
+// db.products.splice(productDeleted, 1);

@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS products (
+	"id" BIGSERIAL PRIMARY KEY,
+  "name" VARCHAR(100) NOT NULL,
+  "price" INTEGER NOT NULL,
+  "category_id" INTEGER NOT NULL,
+  FOREIGN KEY (category_id) REFERENCES categories (id) ON DELETE CASCADE
+);

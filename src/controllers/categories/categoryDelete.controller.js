@@ -4,8 +4,8 @@ const categoryDeleteController = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const categoryDeleted = categoryDeleteService({ id });
-    return res.status(200).json(categoryDeleted)
+    const categoryDeleted = await categoryDeleteService({ id });
+    return res.status(200).send(categoryDeleted)
 
   } catch (err) {
     return res.status(400).json({

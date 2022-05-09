@@ -2,9 +2,9 @@ FROM node:16
 
 RUN apt-get update
 
-ENV port=5432
+ENV port=3000
 
-EXPOSE 5432
+EXPOSE 3000
 
 WORKDIR /app
 

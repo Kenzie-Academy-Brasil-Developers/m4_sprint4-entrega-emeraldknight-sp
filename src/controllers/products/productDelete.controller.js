@@ -4,7 +4,7 @@ const productDeleteController = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const productDeleted = productDeleteService({ id });
+    const productDeleted = await productDeleteService({ id });
     return res.status(200).json(productDeleted)
 
   } catch (err) {
