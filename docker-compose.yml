@@ -23,6 +23,6 @@ services:
     environment:
       - DB_USERNAME=postgres
       - DB_PASSWORD=0708
-      - DB_HOST=localhost
+      - DB_HOST=db
       - DB=products_management
       - DB_PORT=5432
