@@ -1,9 +1,11 @@
 import productListByIDService from "../../services/products/productListById.service";
 
 const productListByIDController = async (req, res) => {
+  const { id } = req.params;
+
   try {
-    const product = await productListByIDService();
-    return res.status(200).send(product)
+    const product = await productListByIDService({ id });
+    return res.status(200).send(product);
 
   } catch (err) {
     return res.status(400).json({
@@ -11,6 +13,7 @@ const productListByIDController = async (req, res) => {
       message: err.message
     })
   }
+
 }
 
 export default productListByIDController;

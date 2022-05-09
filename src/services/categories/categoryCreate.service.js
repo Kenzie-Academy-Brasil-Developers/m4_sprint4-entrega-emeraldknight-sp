@@ -2,9 +2,7 @@
 import database from "../../database";
 
 const categoryCreateService = async ({ name }) => {
-
   try {
-
     
     const res = await database.query(
       "INSERT INTO categories(name) VALUES ($1) RETURNING *;",
@@ -12,14 +10,15 @@ const categoryCreateService = async ({ name }) => {
     );
 
     const categoryAlreadyExists = res.rows.find((row) => row.name === name)
-    if (categoryAlreadyExists !== undefined) {
+    
+    if (categoryAlreadyExists === undefined) {
       throw new Error("Category already exists.")
     }
 
     const [categoryCreated] = res.rows;
-    
+
     const message = {
-      message: "Category created with sucess",
+      message: "Category created with sucess.",
       category: categoryCreated
     };
   
